@@ -1,0 +1,32 @@
+textarea {
+    min-height: 400px;
+}
+div > div > div > div {
+    background-color: rgb(231, 230, 230);
+    /*background-color:#f1f1f1;
+    margin: 1px;
+    margin-bottom: 3px;*/
+    padding: 4px;
+    border: 1px solid;
+}
+.timestamp {
+    text-align: end;
+}
+.row {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+.row_unread {
+    margin-left: 0px;
+    margin-right: 0px;
+    background-color: rgb(255, 255, 255);
+}
+.font {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.pad_t {
+    padding-top: 25px;
+}
+.b_arch {
+    padding: 4px;
+}
