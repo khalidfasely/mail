@@ -1,32 +1,303 @@
-textarea {
-    min-height: 400px;
+/* Login Register pages */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-div > div > div > div {
-    background-color: rgb(231, 230, 230);
-    /*background-color:#f1f1f1;
-    margin: 1px;
-    margin-bottom: 3px;*/
-    padding: 4px;
-    border: 1px solid;
+
+html {
+    font-family: 'Courier New', Courier, monospace;
 }
-.timestamp {
+
+.login-container {
+    min-height: 100vh;
+    background: #222;
+    color: #eee;
+    display: flex;
+}
+
+.login-section {
+    max-width: 50vw;
+    min-width: 40vw;
+    max-height: 55vh;
+    min-height: 50vh;
+    margin: auto;
+    display: flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    background-color: #bbb;
+    color: #222;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #aaa;
+}
+
+.login-section form {
+    max-width: 90%;
+    /**/
+    min-width: 60%;
+    margin:0 auto;
+}
+
+.login-section form input {
+    width:100%;
+    height: 1.8rem;
+    margin: .3rem 0;
+    padding: 5px;
+    background-color: #eee;
+    border: none;
+    font-size: 15px;
+}
+
+.login-section form input:focus {
+    background: #fff;
+    outline: none;
+}
+
+.login-section form .button-login {
+    cursor:pointer;
+    margin-bottom: 3rem;
+    transition: .3s ease;
+    font-size:1.1rem;
+    /**/
+    background-color: #444;
+    color: #eee;
+}
+
+.login-section form .button-login:hover, .login-section form .button-login:focus {
+    background-color: #222;
+}
+
+.login-section h2 {
+    text-align: center;
+}
+
+.login-section .message-error {
+    background: firebrick;
+    min-width:60%;
+    height:2rem;
+    display: flex;
+    align-items:center;
+    justify-content:center;
+    border-radius: 2px;
+    color: #ccc;
+    font-size:1.05rem;
+    margin: 0 auto;
+}
+
+.login-section div {
+    font-size: 1.03rem;
+}
+
+/* Inbox pages */
+
+.home-container {
+    max-width: 75%;
+    margin: 0 auto;
+}
+
+.home-container .home-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    padding-top: 1rem;
+}
+
+.home-container .home-header button, .home-container .home-header .logout {
+    background-color: #666;
+    padding: 5px 8px;
+    border: none;
+    border-radius: 2px;
+    transition: .5s ease;
+    cursor: pointer;
+    color: #eee;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.home-container .home-header button:hover {
+    background-color: #333;
+    /*color: #eee;
+    transform: scale(1.1);*/
+}
+
+.home-container .home-header .home-header__personal {
+    display: flex;
+}
+
+.home-container .home-header .home-header__personal div {
+    padding: 5px 8px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-right: 8px;
+    font-weight: bold;
+}
+
+#compose-view, #emails-view, #email-view {
+    max-width: 90%;
+    margin: 3rem auto;
+}
+
+#compose-view #compose-form {
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+#compose-view .form-email {
+    display: flex;
+    justify-content: space-between;
+}
+
+#compose-view #compose-form {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+#compose-view #compose-form .input-container {
+    min-width: 100%;
+    margin: 5px 0;
     text-align: end;
 }
-.row {
-    margin-left: 0px;
-    margin-right: 0px;
+
+#compose-view #compose-form .input-container input,
+#compose-view #compose-form .input-container textarea {
+    height: 30px;
+    width: 75%;
+    padding: 5px;
+    border: none;
+    border-bottom: 1px solid #222;
+    font-size: 15px;
+    transition: .5s ease;
 }
-.row_unread {
-    margin-left: 0px;
-    margin-right: 0px;
-    background-color: rgb(255, 255, 255);
+
+#compose-view #compose-form .input-container input:focus,
+#compose-view #compose-form .input-container textarea:focus {
+    outline: none;
+    background-color: #ccc;
 }
-.font {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+#compose-view #compose-form .input-container textarea {
+    resize: vertical;
+    height: 300px;
 }
-.pad_t {
-    padding-top: 25px;
+
+#compose-view #compose-form .input-container .button {
+    border-bottom: none;
+    background-color: #666;
+    color: #eee;
+    cursor: pointer;
 }
-.b_arch {
-    padding: 4px;
+
+#compose-view #compose-form .input-container .button:hover {
+    background-color: #444;
+}
+
+#compose-view h3, #emails-view h3, #email-view h3 {
+    margin-bottom: 1rem;
+}
+
+#emails-view .read-email, #emails-view .unread-email {
+    border: 1px solid #222;
+    padding: 6px;
+    margin: 5px 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+}
+
+#emails-view .read-email b, #emails-view .unread-email b {
+    margin-right: 15px;
+}
+
+#emails-view .read-email {
+   background-color: #eee;
+}
+
+#email-view {
+    color: #222;
+}
+
+#email-view .email-infos {
+    margin: 0 0 50px 0;
+}
+
+#email-view .email-infos nav {
+    margin: 8px 0;
+}
+
+#email-view .email-body {
+    font-size: 17px;
+}
+
+.archive-btn, .unarchive-btn, .replay-btn {
+    font-size: 15px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    padding: 5px 9px;
+    border-radius: 2px;
+    transition: .2s ease;
+    margin-top: 5px;
+}
+
+.archive-btn:hover, .unarchive-btn:hover, .replay-btn:hover {
+    background-color: #aaa;
+}
+
+/* Responsivity */
+
+@media (max-width: 1024px) {
+    .login-section {
+        max-width: 75vw;
+        min-width: 65vw;
+        max-height: 55vh;
+        min-height: 50vh;
+    }
+
+    .login-section form {
+        min-width: 70%;
+    }
+
+    .login-section .message-error {
+        min-width:70%;
+    }
+}
+
+@media (max-width: 750px) {
+    .login-section {
+        max-width: 80vw;
+        min-width: 75vw;
+        max-height: 55vh;
+        min-height: 50vh;
+    }
+
+    
+    .home-header__personal {
+        flex-direction: column;
+        align-items: end;
+    }
+
+    
+    .home-container .home-header .home-header__personal div {
+        margin: 0;
+        padding-right: 0;
+    }
+
+    .login-section form {
+        min-width: 77%;
+    }
+
+    .login-section .message-error {
+        min-width:77%;
+    }
+
+    .home-container {
+        max-width: 85%;
+    }
+
+    #compose-view #compose-form {
+        max-width: 100%;
+    }
 }

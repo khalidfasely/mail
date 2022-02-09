@@ -51,15 +51,19 @@ function load_mailbox(mailbox) {
       const div = document.createElement('div');
 
       if (!emails[i].read){
-        div.innerHTML = `<div class="row row_unread" onclick=view_email(${emails[i].id})>
-          <b>${emails[i].sender}</b> 
-          <span class="col">${emails[i].subject}</span> 
+        div.innerHTML = `<div class="unread-email" onclick=view_email(${emails[i].id})>
+          <div>
+            <b>${emails[i].sender}</b> 
+            <span class="col">${emails[i].subject}</span> 
+          </div>
           <span class="timestamp col">${emails[i].timestamp}</span
           </div>`;
       } else {
-        div.innerHTML = `<div class="row" onclick=view_email(${emails[i].id})>
-          <b>${emails[i].sender}</b> 
-          <span class="col">${emails[i].subject}</span> 
+        div.innerHTML = `<div class="read-email" onclick=view_email(${emails[i].id})>
+          <div>
+            <b>${emails[i].sender}</b> 
+            <span class="col">${emails[i].subject}</span>
+          </div>
           <span class="timestamp col">${emails[i].timestamp}</span>
           </div>`;
       }
@@ -93,15 +97,19 @@ function view_email(id){
   .then(email => {
     // Display email content
     const email_content = document.createElement('div');
-    email_content.innerHTML = `<nav id="nav_info" style="border-bottom:1px solid #eae7e7; padding-bottom:25px; padding-top:10px;">
-      <nav><b>From:</b> <span class="font">${email.sender}</span></nav>
-      <nav><b>To:</b> <span class="font">${email.recipients}</span></nav>
-      <nav><b>Subject:</b> <span class="font">${email.subject}</span></nav>
-      <nav><b>Timestamp:</b> <span class="font">${email.timestamp}</span></nav>
-    </nav>
-    <nav class="pad_t">
-    <span class="font">${email.body}</span>
-    </nav>`;
+    email_content.innerHTML = `
+    <div class="email">
+      <nav id="nav_info" class="email-infos">
+        <nav><b>From:</b> <span class="font">${email.sender}</span></nav>
+        <nav><b>To:</b> <span class="font">${email.recipients}</span></nav>
+        <nav><b>Subject:</b> <span class="font">${email.subject}</span></nav>
+        <nav><b>At:</b> <span class="font">${email.timestamp}</span></nav>
+      </nav>
+      <nav class="pad_t">
+        <span class="font email-body">${email.body}</span>
+      </nav>
+    </div>
+    `;
 
     
     document.querySelector('#email-view').append(email_content);
@@ -118,11 +126,11 @@ function view_email(id){
       // Check if the email is archive or not
       if (!email.archived){
         child.innerHTML = `<nav class="pad_t">
-          <button type="button" class="btn btn-outline-dark b_arch" onclick=archive(${email.id})>Archive</button>
+          <button type="button" class="archive-btn" onclick=archive(${email.id})>Archive</button>
           </nav>`;
       } else {
         child.innerHTML = `<nav class="pad_t">
-          <button type="button" class="btn btn-outline-dark b_arch" onclick=archive(${email.id})>Unarchive</button>
+          <button type="button" class="unarchive-btn" onclick=archive(${email.id})>Unarchive</button>
           </nav>`;
       }
 
@@ -130,7 +138,7 @@ function view_email(id){
       const child_re = document.createElement('div');
 
       child_re.innerHTML = `<nav class="pad_t">
-        <button type="button" class="btn btn-light b_arch" onclick=replay(${email.id})>Replay</button>
+        <button type="button" class="replay-btn" onclick=replay(${email.id})>Replay</button>
         </nav>`;
 
       parent.append(child);

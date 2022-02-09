@@ -126,13 +126,19 @@ def email(request, email_id):
             "error": "GET or PUT request required."
         }, status=400)
 
-
+@csrf_exempt
 def login_view(request):
     if request.method == "POST":
 
         # Attempt to sign user in
         email = request.POST["email"]
         password = request.POST["password"]
+        
+        if not (password and email):
+            return render(request, "mail/login.html", {
+                "message": "Fill all fields."
+            })
+        
         user = authenticate(request, username=email, password=password)
 
         # Check if authentication successful
@@ -151,7 +157,7 @@ def logout_view(request):
     logout(request)
     return HttpResponseRedirect(reverse("index"))
 
-
+@csrf_exempt
 def register(request):
     if request.method == "POST":
         email = request.POST["email"]
@@ -162,6 +168,11 @@ def register(request):
         if password != confirmation:
             return render(request, "mail/register.html", {
                 "message": "Passwords must match."
+            })
+
+        if not (password and confirmation and email):
+            return render(request, "mail/register.html", {
+                "message": "Fill all fields."
             })
 
         # Attempt to create new user

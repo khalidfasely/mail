@@ -24,9 +24,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 #SECRET_KEY = '05$4$3aew(8ywondz$g!k4m779pbvn9)euj0zp7-ae*x@4pxr+'
 SECRET_KEY = os.environ.get('SECRET_KEY_MAIL')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True#(os.environ.get('DEBUG_VALUE') == 'True')
 
-ALLOWED_HOSTS = ['lek-mail.herokuapp.com']
+ALLOWED_HOSTS = ['lek-mail.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
