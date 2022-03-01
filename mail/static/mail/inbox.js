@@ -47,7 +47,7 @@ function load_mailbox(mailbox) {
     var i;
     const div_glo = document.querySelector('#emails-view');
     for (i = 0; i < emails.length; i++) {
-      console.log(emails[i]);
+      //console.log(emails[i]);
       const div = document.createElement('div');
 
       if (!emails[i].read){
