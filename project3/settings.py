@@ -82,11 +82,11 @@ DATABASES = {
     #}
     'default': {
         'ENGINE' : 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'mail',
+        'NAME': os.environ.get('MAIL_DB_NAME'),
         'USER': 'postgres',
-        'PASSWORD': 'databasepswrd',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'PASSWORD': os.environ.get('MAIL_DB_PASSWORD'),
+        'HOST': os.environ.get('MAIL_DB_HOST'),
+        'PORT': os.environ.get('MAIL_DB_POST'),
     }
 }
 
