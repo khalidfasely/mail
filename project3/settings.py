@@ -26,7 +26,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY_MAIL')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True#(os.environ.get('DEBUG_VALUE') == 'True')
 
-ALLOWED_HOSTS = ['lek-mail.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['lek-mail.herokuapp.com', '127.0.0.1', 'https://web-production-aab5.up.railway.app']
+
+CSRF_TRUSTED_ORIGINS = ['lek-mail.herokuapp.com', '127.0.0.1', 'https://web-production-aab5.up.railway.app']
 
 
 # Application definition
